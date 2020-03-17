@@ -12,6 +12,7 @@
 
 
     <ImageView
+
         android:scaleType="centerCrop"
         android:id="@+id/item_course_img"
         android:layout_width="match_parent"

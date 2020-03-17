@@ -18,10 +18,12 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
 
     Context context;
     List<AndroidCourse> androidCourses;
+    CourseItemClickListener courseItemClickListener;
 
-    public CourseAdapter(Context context, List<AndroidCourse> androidCourses) {
+    public CourseAdapter(Context context, List<AndroidCourse> androidCourses,CourseItemClickListener listener) {
         this.context = context;
         this.androidCourses = androidCourses;
+        courseItemClickListener = listener;
     }
 
     @NonNull
@@ -55,6 +57,13 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
 
             TvTitle = itemView.findViewById(R.id.item_course_title);
             ImgCourse = itemView.findViewById(R.id.item_course_img);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    courseItemClickListener.onCourseClick(androidCourses.get(getAdapterPosition()),ImgCourse);
+                }
+            });
         }
     }
 }

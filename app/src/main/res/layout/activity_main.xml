@@ -11,7 +11,6 @@
         android:id="@+id/slider_pager"
         android:layout_width="match_parent"
         android:layout_height="275dp"
-        android:background=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
@@ -80,49 +79,6 @@
         />
 
 
-    <TextView
-        android:id="@+id/rv_title_tv2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Java Courses"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/rv_android_courses2"
-        app:layout_constraintTop_toBottomOf="@id/rv_android_courses"
-        android:gravity="center"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#80808080"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_android_courses2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_title_tv2" />
 
-    <Button
-        android:id="@+id/left_arrow_rv2"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_keyboard_arrow_left_black_24dp"
-
-        app:layout_constraintBottom_toBottomOf="@+id/rv_android_courses2"
-        app:layout_constraintTop_toTopOf="@+id/rv_android_courses2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="5dp" />
-    <Button
-        android:id="@+id/right_arrow_rv2"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/ic_keyboard_arrow_right_black_24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_android_courses2"
-        app:layout_constraintTop_toTopOf="@+id/rv_android_courses2"
-        app:layout_constraintRight_toRightOf="parent"
-        />
 </androidx.constraintlayout.widget.ConstraintLayout>

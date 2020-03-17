@@ -5,8 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -15,7 +19,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CourseItemClickListener {
 
     private List<Slide> slides_array;
     private ViewPager sliderPager;
@@ -40,6 +44,19 @@ public class MainActivity extends AppCompatActivity {
         addExampleCourses();
         // Set Horizontal RecyclerView for the first row of android courses
         setAndroid_RecyclerView();
+
+    }
+
+    @Override
+    public void onCourseClick(AndroidCourse course, ImageView courseImageView) {
+        //sending course information to detail activity
+        Intent intent = new Intent(MainActivity.this, CourseDetailActivity.class);
+        intent.putExtra("title",course.getTitle());
+        intent.putExtra("imgURL",course.getThumbnail());
+
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,
+                courseImageView,"sharedName");
+        startActivity(intent,options.toBundle());
 
     }
 
@@ -94,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void setAndroid_RecyclerView(){
         mAndroidCoursesRV = findViewById(R.id.rv_android_courses);
-        CourseAdapter courseAdapter = new CourseAdapter(this,DataManager.androidCourses);
+        CourseAdapter courseAdapter = new CourseAdapter(this,DataManager.androidCourses,this);
         mAndroidCoursesRV.setAdapter(courseAdapter);
         mAndroidCoursesRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
     }
