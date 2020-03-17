@@ -1,4 +1,4 @@
-package com.gamedev.codetube;
+package com.gamedev.codetube.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.gamedev.codetube.R;
+import com.gamedev.codetube.models.Slide;
 
 import java.util.List;
 

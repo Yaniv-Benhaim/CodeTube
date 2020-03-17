@@ -1,4 +1,4 @@
-package com.gamedev.codetube;
+package com.gamedev.codetube.models;
 
 public class Slide {
 

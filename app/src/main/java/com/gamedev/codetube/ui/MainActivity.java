@@ -1,4 +1,4 @@
-package com.gamedev.codetube;
+package com.gamedev.codetube.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,9 +9,14 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.TableLayout;
-import android.widget.Toast;
 
+import com.gamedev.codetube.models.AndroidCourse;
+import com.gamedev.codetube.adapters.CourseAdapter;
+import com.gamedev.codetube.adapters.CourseItemClickListener;
+import com.gamedev.codetube.datamanager.DataManager;
+import com.gamedev.codetube.R;
+import com.gamedev.codetube.models.Slide;
+import com.gamedev.codetube.adapters.SliderAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -53,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements CourseItemClickLi
         Intent intent = new Intent(MainActivity.this, CourseDetailActivity.class);
         intent.putExtra("title",course.getTitle());
         intent.putExtra("imgURL",course.getThumbnail());
+        intent.putExtra("imgCover",course.getCoverPhoto());
 
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,
                 courseImageView,"sharedName");
@@ -102,11 +108,11 @@ public class MainActivity extends AppCompatActivity implements CourseItemClickLi
     }
 
     public void addExampleCourses(){
-        DataManager.androidCourses.add(new AndroidCourse("Javascript 2020",R.drawable.javascript1));
-        DataManager.androidCourses.add(new AndroidCourse("Kotlin The Future",R.drawable.kotlin4));
-        DataManager.androidCourses.add(new AndroidCourse("Artificial Intelligence",R.drawable.ai3));
-        DataManager.androidCourses.add(new AndroidCourse("Android Part 1",R.drawable.androidcourse2));
-        DataManager.androidCourses.add(new AndroidCourse("Java 2020 part 1",R.drawable.javascript1));
+        DataManager.androidCourses.add(new AndroidCourse("Javascript 2020",R.drawable.javascript1,R.drawable.androidcourse2));
+        DataManager.androidCourses.add(new AndroidCourse("Kotlin The Future",R.drawable.kotlin4,R.drawable.androidcourse2));
+        DataManager.androidCourses.add(new AndroidCourse("Artificial Intelligence",R.drawable.ai3,R.drawable.androidcourse2));
+        DataManager.androidCourses.add(new AndroidCourse("Android Part 1",R.drawable.androidcourse2,R.drawable.androidcourse2));
+        DataManager.androidCourses.add(new AndroidCourse("Java 2020 part 1",R.drawable.javascript1,R.drawable.androidcourse2));
     }
 
     public void setAndroid_RecyclerView(){

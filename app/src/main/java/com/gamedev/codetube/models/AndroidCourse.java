@@ -1,4 +1,4 @@
-package com.gamedev.codetube;
+package com.gamedev.codetube.models;
 
 public class AndroidCourse {
 
@@ -8,6 +8,13 @@ public class AndroidCourse {
     private String creator;
     private String rating;
     private String streamingLink;
+    private int coverPhoto;
+
+    public AndroidCourse(String title, int thumbnail, int coverPhoto) {
+        this.title = title;
+        this.thumbnail = thumbnail;
+        this.coverPhoto = coverPhoto;
+    }
 
     public AndroidCourse(String title, String description, int thumbnail, String creator, String rating, String streamingLink) {
         this.title = title;
@@ -21,6 +28,14 @@ public class AndroidCourse {
     public AndroidCourse(String title, int thumbnail) {
         this.title = title;
         this.thumbnail = thumbnail;
+    }
+
+    public int getCoverPhoto() {
+        return coverPhoto;
+    }
+
+    public void setCoverPhoto(int coverPhoto) {
+        this.coverPhoto = coverPhoto;
     }
 
     public String getTitle() {
