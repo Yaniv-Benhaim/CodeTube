@@ -62,13 +62,14 @@
 
         <TextView
             android:lineSpacingExtra="8dp"
-            android:textColor="#36394A"
+            android:layout_marginBottom="16dp"
             android:id="@+id/detail_course_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:textColor="@color/text_light_blue"
             android:text="@string/simple_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,6 +85,33 @@
             app:layout_constraintStart_toStartOf="@+id/detail_course_cover"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_play_arrow_black_24dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@color/text_bg_blue"
+            android:padding="16dp"
+            android:text="Related Videos"
+            android:textColor="@color/text_light_blue"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_course_description"
+            app:layout_constraintVertical_bias="0.050000012" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_related_videos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

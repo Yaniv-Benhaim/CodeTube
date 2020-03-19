@@ -1,6 +1,8 @@
 package com.gamedev.codetube.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.animation.AnimationUtils;
@@ -9,15 +11,22 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.gamedev.codetube.R;
+import com.gamedev.codetube.adapters.RelatedVideoAdapter;
+import com.gamedev.codetube.models.RelatedVideo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CourseDetailActivity extends AppCompatActivity {
 
      ImageView CourseThumb, CourseCoverImg;
      TextView tv_title,tv_description;
      private FloatingActionButton play_fab;
+     private RecyclerView rv_related_videos_id;
+     private RelatedVideoAdapter relatedVideoAdapter;
 
 
     @Override
@@ -28,11 +37,15 @@ public class CourseDetailActivity extends AppCompatActivity {
         //ini Vies
         iniViews();
 
+        //Setup related video rv
+        setupRvRelatedVideos();
+
 
 
     }
 
     void iniViews(){
+        rv_related_videos_id = findViewById(R.id.rv_related_videos);
         play_fab = findViewById(R.id.play_fab);
         String movie = getIntent().getExtras().getString("title");
         int imageResource = getIntent().getExtras().getInt("imgURL");
@@ -49,5 +62,18 @@ public class CourseDetailActivity extends AppCompatActivity {
         //set animations
         CourseCoverImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
         play_fab.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
+    }
+    void setupRvRelatedVideos(){
+        List<RelatedVideo> related_videos_list = new ArrayList<>();
+        related_videos_list.add(new RelatedVideo("Java part 2", R.drawable.javascript1));
+        related_videos_list.add(new RelatedVideo("Java part 3", R.drawable.javascript1));
+        related_videos_list.add(new RelatedVideo("Java part 4", R.drawable.javascript1));
+        related_videos_list.add(new RelatedVideo("Java part 5", R.drawable.javascript1));
+        related_videos_list.add(new RelatedVideo("Java part 6", R.drawable.javascript1));
+        related_videos_list.add(new RelatedVideo("Java part 7", R.drawable.javascript1));
+
+        relatedVideoAdapter = new RelatedVideoAdapter(this,related_videos_list);
+        rv_related_videos_id.setAdapter(relatedVideoAdapter);
+        rv_related_videos_id.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
     }
 }
