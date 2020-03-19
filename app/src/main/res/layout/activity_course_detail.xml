@@ -24,6 +24,16 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_course_cover"
+            app:layout_constraintLeft_toLeftOf="@+id/detail_course_cover"
+            app:layout_constraintRight_toRightOf="@+id/detail_course_cover"
+            app:layout_constraintTop_toTopOf="@+id/detail_course_cover"
+            app:srcCompat="@drawable/gradient_bg" />
+
+        <ImageView
             android:id="@+id/detail_course_img"
             android:layout_width="204dp"
             android:layout_height="114dp"
@@ -63,6 +73,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_course_img" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/play_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_course_cover"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/detail_course_cover"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_play_arrow_black_24dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
