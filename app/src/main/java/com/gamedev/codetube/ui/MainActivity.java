@@ -10,13 +10,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.gamedev.codetube.models.AndroidCourse;
+import com.gamedev.codetube.models.Course;
 import com.gamedev.codetube.adapters.CourseAdapter;
 import com.gamedev.codetube.adapters.CourseItemClickListener;
-import com.gamedev.codetube.datamanager.DataManager;
 import com.gamedev.codetube.R;
 import com.gamedev.codetube.models.Slide;
 import com.gamedev.codetube.adapters.SliderAdapter;
+import com.gamedev.codetube.utils.DataSource;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements CourseItemClickLi
     private List<Slide> slides_array;
     private ViewPager sliderPager;
     private TabLayout indicator;
-    private RecyclerView mAndroidCoursesRV;
+    private RecyclerView mAndroidCoursesRV, mPopularCoursesRV;
 
 
     @Override
@@ -46,14 +46,17 @@ public class MainActivity extends AppCompatActivity implements CourseItemClickLi
         //Automate movement between slides using Timer
         setTimer();
         //Add Example android courses to horizontal Recycler View
-        addExampleCourses();
+
         // Set Horizontal RecyclerView for the first row of android courses
         setAndroid_RecyclerView();
+        iniPopularCourses();
 
     }
 
+
+
     @Override
-    public void onCourseClick(AndroidCourse course, ImageView courseImageView) {
+    public void onCourseClick(Course course, ImageView courseImageView) {
         //sending course information to detail activity
         Intent intent = new Intent(MainActivity.this, CourseDetailActivity.class);
         intent.putExtra("title",course.getTitle());
@@ -107,18 +110,20 @@ public class MainActivity extends AppCompatActivity implements CourseItemClickLi
         timer.scheduleAtFixedRate(new MainActivity.SliderTimer(), 4000, 6000);
     }
 
-    public void addExampleCourses(){
-        DataManager.androidCourses.add(new AndroidCourse("Javascript 2020",R.drawable.javascript1,R.drawable.androidcourse2));
-        DataManager.androidCourses.add(new AndroidCourse("Kotlin The Future",R.drawable.kotlin4,R.drawable.androidcourse2));
-        DataManager.androidCourses.add(new AndroidCourse("Artificial Intelligence",R.drawable.ai3,R.drawable.androidcourse2));
-        DataManager.androidCourses.add(new AndroidCourse("Android Part 1",R.drawable.androidcourse2,R.drawable.androidcourse2));
-        DataManager.androidCourses.add(new AndroidCourse("Java 2020 part 1",R.drawable.javascript1,R.drawable.androidcourse2));
-    }
 
     public void setAndroid_RecyclerView(){
         mAndroidCoursesRV = findViewById(R.id.rv_android_courses);
-        CourseAdapter courseAdapter = new CourseAdapter(this,DataManager.androidCourses,this);
+        CourseAdapter courseAdapter = new CourseAdapter(this, DataSource.getAndroidCourses(),this);
         mAndroidCoursesRV.setAdapter(courseAdapter);
         mAndroidCoursesRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+
+    }
+    public void iniPopularCourses(){
+        //setPopularCourses rv
+        mPopularCoursesRV = findViewById(R.id.rv_popular_courses);
+        CourseAdapter popularCoursesAdapter = new CourseAdapter(this,DataSource.getPopularCourses(), this);
+        mPopularCoursesRV.setAdapter(popularCoursesAdapter);
+        mPopularCoursesRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+
     }
 }

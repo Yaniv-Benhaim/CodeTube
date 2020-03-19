@@ -11,17 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gamedev.codetube.R;
-import com.gamedev.codetube.models.AndroidCourse;
+import com.gamedev.codetube.models.Course;
 
 import java.util.List;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHolder> {
 
     Context context;
-    List<AndroidCourse> androidCourses;
+    List<Course> androidCourses;
     CourseItemClickListener courseItemClickListener;
 
-    public CourseAdapter(Context context, List<AndroidCourse> androidCourses,CourseItemClickListener listener) {
+    public CourseAdapter(Context context, List<Course> androidCourses, CourseItemClickListener listener) {
         this.context = context;
         this.androidCourses = androidCourses;
         courseItemClickListener = listener;

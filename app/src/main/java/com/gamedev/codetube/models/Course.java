@@ -1,6 +1,6 @@
 package com.gamedev.codetube.models;
 
-public class AndroidCourse {
+public class Course {
 
     private String title;
     private String description;
@@ -10,13 +10,13 @@ public class AndroidCourse {
     private String streamingLink;
     private int coverPhoto;
 
-    public AndroidCourse(String title, int thumbnail, int coverPhoto) {
+    public Course(String title, int thumbnail, int coverPhoto) {
         this.title = title;
         this.thumbnail = thumbnail;
         this.coverPhoto = coverPhoto;
     }
 
-    public AndroidCourse(String title, String description, int thumbnail, String creator, String rating, String streamingLink) {
+    public Course(String title, String description, int thumbnail, String creator, String rating, String streamingLink) {
         this.title = title;
         this.description = description;
         this.thumbnail = thumbnail;
@@ -25,7 +25,7 @@ public class AndroidCourse {
         this.streamingLink = streamingLink;
     }
 
-    public AndroidCourse(String title, int thumbnail) {
+    public Course(String title, int thumbnail) {
         this.title = title;
         this.thumbnail = thumbnail;
     }
