@@ -12,17 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.MovieFireBase"></activity>
-        <activity
-            android:name=".ui.MoviePlayerActivity"
-            android:screenOrientation="fullSensor" />
-        <activity android:name=".ui.CourseDetailActivity" />
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.MovieFireBase" />
+        <activity android:name=".ui.CourseDetailActivity" />
+        <activity android:name=".ui.MainActivity">
+
         </activity>
     </application>
 

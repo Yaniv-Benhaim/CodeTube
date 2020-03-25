@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/account_layout" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <ImageView
+
+        android:id="@+id/profile_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:foreground="@drawable/rounded_foreground"/>
+
+    <TextView
+        android:id="@+id/person_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:text="ACCOUNT"
+        android:textColor="#000"
+        android:textSize="26sp"
+        android:textStyle="normal"/>
+    <TextView
+        android:id="@+id/person_mail_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/person_name_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:text="ACCOUNT"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:textStyle="normal"/>
+
+            <TextView
+                android:id="@+id/become_an_instructor_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/person_mail_tv"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="110dp"
+                android:gravity="center_horizontal"
+                android:text="Become an instructor"
+                android:textColor="#673AB7"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/support"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/become_an_instructor_btn"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center_vertical"
+                android:text="Support"
+                android:textSize="12sp"
+                android:textStyle="normal"/>
+
+            <LinearLayout
+
+                android:id="@+id/about_codetube_btn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/support"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:text="About Code Tube"
+                    android:textColor="#000"
+                    android:textStyle="normal"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_right"
+                   />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/faq_btn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/about_codetube_btn"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Frequently asked questions"
+                    android:textColor="#000"
+                    android:textStyle="normal"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_right"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/share_btn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/faq_btn"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Share the CodeTube App"
+                    android:textColor="#000"
+                    android:textStyle="normal"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_right"
+                    />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/account_settings_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/share_btn"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:text="Account settings"
+                android:textSize="12sp"
+                android:textStyle="normal"/>
+
+            <LinearLayout
+
+                android:id="@+id/account_security_btn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/account_settings_tv"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Account security"
+                    android:textColor="#000"
+                    android:textStyle="normal"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_right"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/notification_btn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/account_security_btn"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Notification preferences"
+                    android:textColor="#000"
+                    android:textStyle="normal"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_right"
+                    />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/video_preferences_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/notification_btn"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:text="Video preferences"
+                android:textSize="12sp"
+                android:textStyle="normal"/>
+
+            <LinearLayout
+
+                android:id="@+id/download_options_btn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/video_preferences_tv"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Download options"
+                    android:textColor="#000"
+                    android:textStyle="normal"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_right"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/video_playback_options_btn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/download_options_btn"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Video playback options"
+                    android:textColor="#000"
+                    android:textStyle="normal"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_right"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/sign_out_btn_account_page"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/video_playback_options_btn"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="110dp"
+                android:gravity="center_horizontal"
+                android:text="Sign out"
+                android:textColor="#673AB7"
+                android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/app_version_account_page"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/sign_out_btn_account_page"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="110dp"
+                android:gravity="center_horizontal"
+                android:text="Code Tube v1.0.0"
+                android:textSize="12sp"
+                android:textStyle="normal"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/app_version_account_page"/>
+
+
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

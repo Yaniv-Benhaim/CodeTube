@@ -31,7 +31,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/detail_course_cover"
             app:layout_constraintRight_toRightOf="@+id/detail_course_cover"
             app:layout_constraintTop_toTopOf="@+id/detail_course_cover"
-            app:srcCompat="@drawable/gradient_bg" />
+            app:srcCompat="@drawable/gradient_bg_img" />
 
         <ImageView
             android:id="@+id/detail_course_img"

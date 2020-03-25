@@ -10,10 +10,11 @@ public class Course {
     private String streamingLink;
     private int coverPhoto;
 
-    public Course(String title, int thumbnail, int coverPhoto) {
+    public Course(String title, int thumbnail, int coverPhoto, String streamingLink) {
         this.title = title;
         this.thumbnail = thumbnail;
         this.coverPhoto = coverPhoto;
+        this.streamingLink = streamingLink;
     }
 
     public Course(String title, String description, int thumbnail, String creator, String rating, String streamingLink) {

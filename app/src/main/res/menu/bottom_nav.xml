@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_featured"
+        android:icon="@drawable/ic_featured"
+        android:title="@string/featured"/>
+    <item android:id="@+id/nav_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"/>
+    <item android:id="@+id/nav_my_courses"
+        android:icon="@drawable/ic_play_circle_outline_black_24dp"
+        android:title="My courses"/>
+    <item android:id="@+id/nav_favourite"
+        android:icon="@drawable/ic_favorite_border_black_24dp"
+        android:title="Featured"/>
+    <item android:id="@+id/nav_account"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="Account"/>
+
+</menu>

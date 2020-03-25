@@ -1,6 +1,13 @@
 package com.gamedev.codetube.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +48,9 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
 
         holder.TvTitle.setText(androidCourses.get(position).getTitle());
         holder.ImgCourse.setImageResource(androidCourses.get(position).getThumbnail());
+
+
+
     }
 
     @Override

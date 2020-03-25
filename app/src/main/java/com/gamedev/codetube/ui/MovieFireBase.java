@@ -33,7 +33,8 @@ public class MovieFireBase extends YouTubeBaseActivity implements YouTubePlayer.
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if (!b) {
-            youTubePlayer.cueVideo("fhWaJi1Hsfo"); // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
+            String streamingLink = getIntent().getExtras().getString("link");
+            youTubePlayer.cueVideo(streamingLink); // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
         }
     }
 

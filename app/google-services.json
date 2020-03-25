@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "595194357858",
+    "firebase_url": "https://codetube-424c0.firebaseio.com",
+    "project_id": "codetube-424c0",
+    "storage_bucket": "codetube-424c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595194357858:android:cb0e33dfa55f389d9a893b",
+        "android_client_info": {
+          "package_name": "com.gamedev.codetube"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595194357858-0s8e2629sfcdp8oc110f3b1a3gf0m101.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gamedev.codetube",
+            "certificate_hash": "1972b4eb8bc910983f2cd15cbbe57bfb7763f5bf"
+          }
+        },
+        {
+          "client_id": "595194357858-sk174e7jgktciitsbb4k11erhp1cljdb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzgRlEC34dAX3QK5NZJzNHgSzlVYdgveU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595194357858-sk174e7jgktciitsbb4k11erhp1cljdb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

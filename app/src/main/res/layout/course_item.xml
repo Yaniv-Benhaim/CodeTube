@@ -3,38 +3,54 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="190dp"
-    android:layout_height="match_parent"
-    android:layout_marginRight="8dp"
+    android:layout_width="220dp"
+    android:layout_height="220dp"
     android:clickable="true"
+    android:layout_marginLeft="8dp"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackgroundBorderless">
 
-
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_course_img_cardview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
     <ImageView
 
         android:scaleType="centerCrop"
         android:id="@+id/item_course_img"
-        android:layout_width="match_parent"
+        android:layout_width="220dp"
+
         android:layout_height="130dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
-        android:textColor="#fff"
-        android:textStyle="bold"
         android:id="@+id/item_course_title"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/item_course_img"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/item_course_img"
-        app:layout_constraintTop_toBottomOf="@+id/item_course_img" />
+        android:text="Full Android studio course - Beginner to Advanced"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_course_img_cardview"
+        />
+    <ImageView
+        android:id="@+id/rating_course_rv"
+        android:layout_width="100dp"
+        android:layout_marginTop="75dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rating_img"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

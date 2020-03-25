@@ -1,33 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity"
-    android:background="@color/colorPrimary">
+    android:background="#FFFFFF">
+
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation"/>
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/bottom_nav"/>
+
+    <ScrollView
+        android:id="@+id/completescrollview"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include android:id="@+id/mCustomToolBar"
+
+            layout="@layout/custom_toolbar"/>
+
+
+
+
+
+
     <androidx.viewpager.widget.ViewPager
+
         android:id="@+id/slider_pager"
         android:layout_width="match_parent"
-        android:layout_height="275dp"
+        android:layout_height="200dp"
+        android:background="@drawable/javascript1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toBottomOf="@id/mCustomToolBar" >
 
     </androidx.viewpager.widget.ViewPager>
+
+
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/indicator"
         app:tabBackground="@drawable/indicator_selecter"
         app:tabIndicatorHeight="0dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,84 +79,270 @@
 
 
     </com.google.android.material.tabs.TabLayout>
+
+
+        <LinearLayout
+            android:id="@+id/banner_main"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/gradient_bg_img"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/indicator">
+
+            <TextView
+                android:id="@+id/banner_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:text="Go premium and watch ad free | for 1 year"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+            <TextView
+                android:id="@+id/banner_tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:text="Now for $4.99"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/categories_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:gravity="left"
+            android:text="Categories"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/banner_main"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_marginRight="20dp"
+            android:gravity="right"
+            android:text="see all"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/banner_main" />
+
+
+
+        <HorizontalScrollView
+            android:id="@+id/horizontal_scrollview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:scrollbars="none"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/categories_tv">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="50dp"
+                    android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn1"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/categorie_btn_style"
+                    android:clickable="true"
+                    android:text="Android"
+                    android:textColor="#000"
+                    android:textStyle="normal"/>
+                <Button
+                    android:id="@+id/btn2"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/categorie_btn_style"
+                    android:text="swift"
+                    android:textColor="#000"
+                    android:textStyle="normal"/>
+
+                <Button
+                    android:id="@+id/btn3"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/categorie_btn_style"
+                    android:text="java"
+                    android:textColor="#000"
+                    android:textStyle="normal" />
+                <Button
+                    android:id="@+id/btn4"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/categorie_btn_style"
+                    android:text="C#"
+                    android:textColor="#000"
+                    android:textStyle="normal"/>
+
+                <Button
+                    android:id="@+id/btn5"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/categorie_btn_style"
+                    android:text="c++"
+                    android:textColor="#000"
+                    android:textStyle="normal"/>
+
+
+            </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn7"
+                        android:layout_width="90dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/categorie_btn_style"
+                        android:text="design"
+                        android:textColor="#000"
+                        android:textStyle="normal"/>
+                    <Button
+                        android:id="@+id/btn8"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/categorie_btn_style"
+                        android:text="flutter"
+                        android:textColor="#000"
+                        android:textStyle="normal"/>
+
+                    <Button
+                        android:id="@+id/btn9"
+                        android:layout_width="90dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/categorie_btn_style"
+                        android:text="unity"
+                        android:textColor="#000"
+                        android:textStyle="normal"/>
+                    <Button
+                        android:id="@+id/btn10"
+                        android:layout_width="130dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/categorie_btn_style"
+                        android:text="unreal"
+                        android:textColor="#000"
+                        android:textStyle="normal"/>
+                    <Button
+                        android:id="@+id/btn6"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/categorie_btn_style"
+                        android:text="html"
+                        android:textColor="#000"
+                        android:textStyle="normal"/>
+
+                </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </HorizontalScrollView>
     <TextView
+        android:layout_marginTop="40dp"
         android:id="@+id/rv_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Android Courses"
+        android:text="Top courses on Code Tube"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toTopOf="@id/rv_android_courses"
-        app:layout_constraintTop_toBottomOf="@id/indicator"
+        android:textColor="#000"
         android:gravity="center"
-        android:textSize="26sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="#80808080"/>
+        app:layout_constraintTop_toBottomOf="@id/horizontal_scrollview"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_android_courses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_title_tv" />
 
-    <Button
-        android:id="@+id/left_arrow_rv"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_keyboard_arrow_left_black_24dp"
-
-        app:layout_constraintBottom_toBottomOf="@+id/rv_android_courses"
-        app:layout_constraintTop_toTopOf="@+id/rv_android_courses"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="5dp" />
-    <Button
-        android:id="@+id/right_arrow_rv"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/ic_keyboard_arrow_right_black_24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_android_courses"
-        app:layout_constraintTop_toTopOf="@+id/rv_android_courses"
-        app:layout_constraintRight_toRightOf="parent"
-        />
-
         <TextView
-            android:id="@+id/popular_coursesTV"
+            android:id="@+id/rv2_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:text="Popular Courses"
-            android:textColor="#80808080"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="New Courses"
+            android:textColor="#000"
+            android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
+            android:gravity="center"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_android_courses"
-            app:layout_constraintVertical_bias="0.0" />
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/rv_android_courses"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_popular_courses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginBottom="30dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/popular_coursesTV" />
+            app:layout_constraintBottom_toTopOf="@+id/bottomview"
+            app:layout_constraintTop_toBottomOf="@id/rv2_title_tv"/>
+
+        <View
+            android:id="@+id/bottomview"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 
-</androidx.core.widget.NestedScrollView>
+    </ScrollView>
+</RelativeLayout>
