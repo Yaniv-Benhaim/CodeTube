@@ -2,13 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/search_layout" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_theme">
+    android:background="@android:color/white">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="SEARCH"
-        android:textSize="30sp"/>
+    <include android:id="@+id/mCustomToolBar"
+
+        layout="@layout/custom_toolbar"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/mCustomToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/search_recycler_fragment"/>
+
+
 
 </RelativeLayout>

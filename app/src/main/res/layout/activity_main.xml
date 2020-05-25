@@ -10,6 +10,7 @@
 
 
 
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
@@ -28,7 +29,6 @@
 
     <ScrollView
         android:id="@+id/completescrollview"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -40,9 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include android:id="@+id/mCustomToolBar"
 
-            layout="@layout/custom_toolbar"/>
 
 
 
@@ -57,7 +55,8 @@
         android:background="@drawable/javascript1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mCustomToolBar" >
+        app:layout_constraintTop_toBottomOf="@id/mCustomToolBar"
+        tools:ignore="NotSibling">
 
     </androidx.viewpager.widget.ViewPager>
 
@@ -329,8 +328,17 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottomview"
+            app:layout_constraintBottom_toTopOf="@+id/rv_firebase_courses"
             app:layout_constraintTop_toBottomOf="@id/rv2_title_tv"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_firebase_courses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomview"
+            app:layout_constraintTop_toBottomOf="@id/rv_popular_courses"/>
 
         <View
             android:id="@+id/bottomview"

@@ -128,6 +128,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         rv_related_videos_id = findViewById(R.id.rv_related_videos);
         play_fab = findViewById(R.id.play_fab);
         String movie = getIntent().getExtras().getString("title");
+        String description = getIntent().getExtras().getString("description");
         int imageResource = getIntent().getExtras().getInt("imgURL");
         int imageCover = getIntent().getExtras().getInt("imgCover");
         CourseThumb = findViewById(R.id.detail_course_img);
@@ -137,6 +138,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         tv_title.setText(movie);
         //getSupportActionBar().setTitle(movie);
         tv_description = findViewById(R.id.detail_course_description);
+        tv_description.setText(description);
         CourseCoverImg = findViewById(R.id.detail_course_cover);
         Glide.with(this).load(imageCover).into(CourseCoverImg);
         //set animations

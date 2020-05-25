@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/search_fragment_cover_image"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:src="@drawable/first_slide"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/search_fragment_profile_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toBottomOf="@id/search_fragment_cover_image"
+        android:src="@drawable/facepic"
+        android:foreground="@drawable/rounded_foreground"/>
+
+    <TextView
+        android:id="@+id/search_fragment_title"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintLeft_toRightOf="@id/search_fragment_profile_image"
+        app:layout_constraintTop_toBottomOf="@id/search_fragment_cover_image"
+        android:text="Complete python beginners course from start to finnish"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

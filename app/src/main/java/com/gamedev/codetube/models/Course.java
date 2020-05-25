@@ -9,12 +9,51 @@ public class Course {
     private String rating;
     private String streamingLink;
     private int coverPhoto;
+    private String TAGS;
+    private int views;
+    private String course_thumbnail;
 
-    public Course(String title, int thumbnail, int coverPhoto, String streamingLink) {
+    public String getCourse_thumbnail() {
+        return course_thumbnail;
+    }
+
+    public void setCourse_thumbnail(String course_thumbnail) {
+        this.course_thumbnail = course_thumbnail;
+    }
+
+    public Course(String title, String course_thumbnail) {
+        this.title = title;
+        this.course_thumbnail = course_thumbnail;
+    }
+
+    public Course(){
+
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+
+    public String getTAGS() {
+        return TAGS;
+    }
+
+    public void setTAGS(String TAGS) {
+        this.TAGS = TAGS;
+    }
+
+
+    public Course(String title, int thumbnail, int coverPhoto, String streamingLink, String TAGS) {
         this.title = title;
         this.thumbnail = thumbnail;
         this.coverPhoto = coverPhoto;
         this.streamingLink = streamingLink;
+        this.TAGS = TAGS;
+
     }
 
     public Course(String title, String description, int thumbnail, String creator, String rating, String streamingLink) {

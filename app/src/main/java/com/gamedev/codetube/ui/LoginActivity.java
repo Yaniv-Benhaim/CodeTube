@@ -36,10 +36,14 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnSignOut;
     private int RC_SIGN_IN = 1;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
         
         iniViews();
         iniFirebase();
@@ -94,8 +98,10 @@ public class LoginActivity extends AppCompatActivity {
             FirebaseGoogleAuth(acc);
         }
         catch (ApiException e){
-            Toast.makeText(LoginActivity.this, "Sign in Failed",Toast.LENGTH_SHORT).show();
-            FirebaseGoogleAuth(null);
+            Toast.makeText(LoginActivity.this, "Sign in Failed, try again",Toast.LENGTH_SHORT).show();
+            //FirebaseGoogleAuth(null);
+           Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+           startActivity(intent);
         }
     }
 

@@ -16,9 +16,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.gamedev.codetube.adapters.CourseFireBaseAdapter;
+import com.gamedev.codetube.adapters.NoteAdapter;
 import com.gamedev.codetube.currentuser.User;
 import com.gamedev.codetube.fragments.FavouriteFragment;
 import com.gamedev.codetube.fragments.HomeFragment;
@@ -29,6 +33,7 @@ import com.gamedev.codetube.models.Course;
 import com.gamedev.codetube.adapters.CourseAdapter;
 import com.gamedev.codetube.adapters.CourseItemClickListener;
 import com.gamedev.codetube.R;
+import com.gamedev.codetube.models.Note;
 import com.gamedev.codetube.models.Slide;
 import com.gamedev.codetube.adapters.SliderAdapter;
 import com.gamedev.codetube.utils.DataSource;
@@ -36,6 +41,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +52,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements CourseItemClickListener {
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference courseRef = db.collection("Courses");
+    private CourseFireBaseAdapter adapter;
 
     private List<Slide> slides_array;
     private ViewPager sliderPager;
@@ -96,10 +109,20 @@ public class MainActivity extends AppCompatActivity implements CourseItemClickLi
         setContentView(R.layout.activity_main);
 
 
-        Toolbar toolbar = findViewById(R.id.mCustomToolBar);
+        /*Toolbar toolbar = findViewById(R.id.mCustomToolBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("  Code Tube");
         getSupportActionBar().setIcon(getDrawable(R.drawable.actionbarlogo));
+         */
+
+        LinearLayout bannerMain = findViewById(R.id.banner_main);
+        bannerMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,AdminActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -119,6 +142,8 @@ public class MainActivity extends AppCompatActivity implements CourseItemClickLi
         setAndroid_RecyclerView();
         //iniPopularCourses();
         iniPopularCourses();
+        //setup firestore recyclerview
+        setupRecyclerView();
 
 
 
@@ -126,10 +151,11 @@ public class MainActivity extends AppCompatActivity implements CourseItemClickLi
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         //I added this if statement to keep the selected fragment when rotating the device
-      //  if (savedInstanceState == null) {
-       //     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-      //              new HomeFragment()).commit();
-     //   }
+       if (savedInstanceState == null)
+       {
+           getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new HomeFragment()).commit();
+       }
 
 
 
@@ -167,6 +193,8 @@ public class MainActivity extends AppCompatActivity implements CourseItemClickLi
             });
         }
     }
+
+
 
     public void mainInvisible(){
         ScrollView mainView = findViewById(R.id.completescrollview);
@@ -237,5 +265,50 @@ public class MainActivity extends AppCompatActivity implements CourseItemClickLi
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setupRecyclerView() {
+        Query query = courseRef.orderBy("views", Query.Direction.DESCENDING);
+
+        FirestoreRecyclerOptions<Course> options = new FirestoreRecyclerOptions.Builder<Course>()
+                .setQuery(query, Course.class)
+                .build();
+
+
+        adapter = new CourseFireBaseAdapter(options);
+        RecyclerView recyclerView = findViewById(R.id.rv_firebase_courses);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        recyclerView.setAdapter(adapter);
+
+
+        adapter.setOnItemClickListener(new CourseFireBaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                Course course = documentSnapshot.toObject(Course.class);
+
+                Intent intent = new Intent(MainActivity.this, CourseDetailActivity.class);
+                intent.putExtra("title",course.getTitle());
+                intent.putExtra("imgURL",course.getThumbnail());
+                intent.putExtra("imgCover",course.getCoverPhoto());
+                intent.putExtra("link",course.getStreamingLink());
+                intent.putExtra("description",course.getDescription());
+
+
+                startActivity(intent);
+
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }

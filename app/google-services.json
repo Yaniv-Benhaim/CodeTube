@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "595194357858-c7kl058a33k0uskvbo0nn4rmrd6dmrjo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gamedev.codetube",
+            "certificate_hash": "f42c349416403304e548714a2f06c050be809067"
+          }
+        },
+        {
           "client_id": "595194357858-0s8e2629sfcdp8oc110f3b1a3gf0m101.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -36,7 +44,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "595194357858-sk174e7jgktciitsbb4k11erhp1cljdb.apps.googleusercontent.com",
+              "client_id": "595194357858-bm534kqanert5duiibk5qorgoff4iau3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
