@@ -15,32 +15,29 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.gamedev.codetube.R;
 import com.gamedev.codetube.models.Course;
 import com.gamedev.codetube.ui.MainActivity;
-import com.gamedev.codetube.utils.DataSource;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-public class CourseFireBaseAdapter extends FirestoreRecyclerAdapter<Course, CourseFireBaseAdapter.CourseHolder> {
+public class SearchFirebaseAdapter extends FirestoreRecyclerAdapter<Course, SearchFirebaseAdapter.CourseHolder> {
 
 
     private OnItemClickListener listener;
 
 
 
-    public CourseFireBaseAdapter(@NonNull FirestoreRecyclerOptions<Course> options) {
+    public SearchFirebaseAdapter(@NonNull FirestoreRecyclerOptions<Course> options) {
         super(options);
 
     }
 
     @Override
     protected void onBindViewHolder(@NonNull CourseHolder holder, int position, @NonNull Course model) {
-
-
         holder.title.setText(model.getTitle());
         Picasso.get().load(model.getCourse_thumbnail()).into(holder.thumbnail, new Callback() {
             @Override
             public void onSuccess() {
-                
+
             }
 
             @Override
@@ -53,9 +50,17 @@ public class CourseFireBaseAdapter extends FirestoreRecyclerAdapter<Course, Cour
     @NonNull
     @Override
     public CourseHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_item,
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_item_for_fragment_layout,
                 parent, false);
         return new CourseHolder(v);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
     }
 
     class CourseHolder extends RecyclerView.ViewHolder{
@@ -66,9 +71,9 @@ public class CourseFireBaseAdapter extends FirestoreRecyclerAdapter<Course, Cour
         public CourseHolder(@NonNull View itemView) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.item_course_title);
-            description = itemView.findViewById(R.id.text_view_description);
-            thumbnail = itemView.findViewById(R.id.item_course_img);
+            title = itemView.findViewById(R.id.search_fragment_title);
+            //description = itemView.findViewById(R.id.text_view_description);
+            thumbnail = itemView.findViewById(R.id.search_fragment_cover_image);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -82,14 +87,6 @@ public class CourseFireBaseAdapter extends FirestoreRecyclerAdapter<Course, Cour
 
 
         }
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(DocumentSnapshot documentSnapshot, int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener){
-        this.listener = listener;
     }
 
 

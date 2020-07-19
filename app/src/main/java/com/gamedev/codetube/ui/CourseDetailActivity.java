@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.facebook.ads.Ad;
@@ -21,8 +23,11 @@ import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
 import com.gamedev.codetube.R;
 import com.gamedev.codetube.adapters.RelatedVideoAdapter;
+import com.gamedev.codetube.currentuser.User;
 import com.gamedev.codetube.models.RelatedVideo;
+import com.gamedev.codetube.utils.DataSource;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -36,7 +41,8 @@ public class CourseDetailActivity extends AppCompatActivity {
      private FloatingActionButton play_fab;
      private RecyclerView rv_related_videos_id;
      private RelatedVideoAdapter relatedVideoAdapter;
-    private InterstitialAd interstitialAd;
+     private InterstitialAd interstitialAd;
+     private Animation btnAnim;
 
 
     @Override
@@ -44,14 +50,28 @@ public class CourseDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_detail);
 
-        //show ad
-        showAd();
-
         //ini Vies
         iniViews();
 
+        //play button setup
+        playButton();
+
+        //play button scale animation
+        setBtnAnim();
+
+        //show ad if user is not premium (fix amount of ads)
+        showAdNotPremium();
+
         //Setup related video rv
         setupRvRelatedVideos();
+
+
+
+
+
+    }
+
+    private void playButton() {
 
         play_fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,8 +85,13 @@ public class CourseDetailActivity extends AppCompatActivity {
             }
         });
 
+    }
 
-
+    private void showAdNotPremium() {
+        if(!User.CurrentLoggedIn.isPremium)
+        {
+            showAd();  //fix ad amount
+        }
     }
 
     private void showAd() {
@@ -129,41 +154,49 @@ public class CourseDetailActivity extends AppCompatActivity {
         play_fab = findViewById(R.id.play_fab);
         String movie = getIntent().getExtras().getString("title");
         String description = getIntent().getExtras().getString("description");
-        int imageResource = getIntent().getExtras().getInt("imgURL");
-        int imageCover = getIntent().getExtras().getInt("imgCover");
+        String imageResource = getIntent().getExtras().getString("imgURL");
+        String imageCover = getIntent().getExtras().getString("imgCover");
+        String courseFbCover = getIntent().getExtras().getString("courseFbCover");
         CourseThumb = findViewById(R.id.detail_course_img);
-        Glide.with(this).load(imageResource).into(CourseThumb);
-        CourseThumb.setImageResource(imageResource);
+
+        if(courseFbCover == null) {
+            Glide.with(this).load(imageResource).into(CourseThumb);
+
+        }
+
+        Picasso.get().load(imageResource).into(CourseThumb);
+        //CourseThumb.setImageResource(imageResource);
+
+        Picasso.get().load(courseFbCover).fit().into(CourseThumb);
+
+
         tv_title = findViewById(R.id.detail_course_title);
         tv_title.setText(movie);
         //getSupportActionBar().setTitle(movie);
         tv_description = findViewById(R.id.detail_course_description);
         tv_description.setText(description);
         CourseCoverImg = findViewById(R.id.detail_course_cover);
-        Glide.with(this).load(imageCover).into(CourseCoverImg);
+
+        if(courseFbCover == null) {
+            Glide.with(this).load(imageCover).into(CourseCoverImg);
+        }
+
+        Picasso.get().load(imageCover).into(CourseCoverImg);
         //set animations
         CourseCoverImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
         play_fab.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
     }
-    void setupRvRelatedVideos(){
-        List<RelatedVideo> related_videos_list = new ArrayList<>();
-        related_videos_list.add(new RelatedVideo("Java part 2", R.drawable.javascript1));
-        related_videos_list.add(new RelatedVideo("Java part 3", R.drawable.javascript1));
-        related_videos_list.add(new RelatedVideo("Java part 4", R.drawable.javascript1));
-        related_videos_list.add(new RelatedVideo("Java part 5", R.drawable.javascript1));
-        related_videos_list.add(new RelatedVideo("Java part 6", R.drawable.javascript1));
-        related_videos_list.add(new RelatedVideo("Java part 7", R.drawable.javascript1));
 
-        relatedVideoAdapter = new RelatedVideoAdapter(this,related_videos_list);
+    void setupRvRelatedVideos(){
+
+
+        relatedVideoAdapter = new RelatedVideoAdapter(this, DataSource.getCourses());
         rv_related_videos_id.setAdapter(relatedVideoAdapter);
         rv_related_videos_id.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
     }
 
     private void showAdWithDelay() {
-        /**
-         * Here is an example for displaying the ad with delay;
-         * Please do not copy the Handler into your project
-         */
+
         Handler handler = new Handler();
         handler.postDelayed(() -> {
             // Check if interstitialAd has been loaded successfully
@@ -184,5 +217,18 @@ public class CourseDetailActivity extends AppCompatActivity {
             interstitialAd.destroy();
         }
         super.onDestroy();
+    }
+
+    private void setBtnAnim() {
+        btnAnim = AnimationUtils.loadAnimation(this, R.anim.play_btn_anim);
+        play_fab.startAnimation(btnAnim);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(CourseDetailActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

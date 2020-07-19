@@ -5,7 +5,5 @@
     <color name="colorAccent">#f1b814</color>
     <color name="text_light_blue">#566f9a</color>
     <color name="text_bg_blue">#1a242f</color>
-    <color name="player_bg">#000000</color>
-    <color name="shutter_bg">#000000</color>
-    <color name="green_theme">#7bffa0</color>
+    <color name="purple_theme">#673AB7</color>
 </resources>

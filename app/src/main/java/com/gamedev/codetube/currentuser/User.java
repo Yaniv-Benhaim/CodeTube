@@ -12,6 +12,8 @@ public class User {
     public static String personEmail = null;
     public static String personId = null;
     public static Uri personPhoto = null;
+    public static boolean isPremium;
+
 
     }
 

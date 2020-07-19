@@ -62,11 +62,11 @@ public class AdminActivity extends AppCompatActivity {
             return;
         }
 
-        CollectionReference coursesRef = FirebaseFirestore.getInstance()
+        /*CollectionReference coursesRef = FirebaseFirestore.getInstance()
                 .collection("Courses");
         coursesRef.add(new Course(title , imageLink));
         Toast.makeText(this,"Succesfully added new Video",Toast.LENGTH_SHORT).show();
-        finish();
+        finish();*/
     }
 
     private void iniViews() {

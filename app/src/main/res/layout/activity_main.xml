@@ -11,6 +11,8 @@
 
 
 
+
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
@@ -161,21 +163,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
+                android:clickable="false"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
                     android:layout_marginRight="50dp"
                     android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:clickable="false"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn1"
+                    android:id="@+id/android"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_marginRight="10dp"
@@ -185,7 +190,7 @@
                     android:textColor="#000"
                     android:textStyle="normal"/>
                 <Button
-                    android:id="@+id/btn2"
+                    android:id="@+id/swift"
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:background="@drawable/categorie_btn_style"
@@ -194,7 +199,7 @@
                     android:textStyle="normal"/>
 
                 <Button
-                    android:id="@+id/btn3"
+                    android:id="@+id/java"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
@@ -203,7 +208,7 @@
                     android:textColor="#000"
                     android:textStyle="normal" />
                 <Button
-                    android:id="@+id/btn4"
+                    android:id="@+id/c_sharp"
                     android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
@@ -213,7 +218,7 @@
                     android:textStyle="normal"/>
 
                 <Button
-                    android:id="@+id/btn5"
+                    android:id="@+id/c_plus"
                     android:layout_width="110dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
@@ -230,10 +235,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:clickable="false"
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btn7"
+                        android:id="@+id/design"
                         android:layout_width="90dp"
                         android:layout_height="40dp"
                         android:background="@drawable/categorie_btn_style"
@@ -241,7 +247,7 @@
                         android:textColor="#000"
                         android:textStyle="normal"/>
                     <Button
-                        android:id="@+id/btn8"
+                        android:id="@+id/flutter"
                         android:layout_width="100dp"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
@@ -251,7 +257,7 @@
                         android:textStyle="normal"/>
 
                     <Button
-                        android:id="@+id/btn9"
+                        android:id="@+id/unity"
                         android:layout_width="90dp"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
@@ -260,7 +266,7 @@
                         android:textColor="#000"
                         android:textStyle="normal"/>
                     <Button
-                        android:id="@+id/btn10"
+                        android:id="@+id/unreal"
                         android:layout_width="130dp"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
@@ -269,7 +275,7 @@
                         android:textColor="#000"
                         android:textStyle="normal"/>
                     <Button
-                        android:id="@+id/btn6"
+                        android:id="@+id/html"
                         android:layout_width="100dp"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
@@ -293,52 +299,50 @@
         android:text="Top courses on Code Tube"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/rv_android_courses"
+        app:layout_constraintBottom_toTopOf="@id/rv_firebase_courses"
         android:textColor="#000"
         android:gravity="center"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/horizontal_scrollview"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_android_courses"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_title_tv" />
 
-        <TextView
-            android:id="@+id/rv2_title_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Courses"
-            android:textColor="#000"
-            android:textSize="18sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:gravity="center"
-            app:layout_constraintRight_toRightOf="parent"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/rv_android_courses"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_popular_courses"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/rv_firebase_courses"
-            app:layout_constraintTop_toBottomOf="@id/rv2_title_tv"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_firebase_courses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/rv2_title_tv"
+            app:layout_constraintTop_toBottomOf="@id/rv_title_tv"/>
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/rv2_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Because you searched for 'firebase' "
+            android:textColor="#000"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/rv_personal_courses"
+            android:gravity="center"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/rv_firebase_courses"/>
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_personal_courses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="16dp"
             app:layout_constraintBottom_toTopOf="@+id/bottomview"
-            app:layout_constraintTop_toBottomOf="@id/rv_popular_courses"/>
+            app:layout_constraintTop_toBottomOf="@id/rv2_title_tv"/>
 
         <View
             android:id="@+id/bottomview"

@@ -11,27 +11,45 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.gamedev.codetube.R;
 import com.gamedev.codetube.adapters.CourseAdapter;
+import com.gamedev.codetube.adapters.CourseFireBaseAdapter;
+import com.gamedev.codetube.adapters.SearchFirebaseAdapter;
 import com.gamedev.codetube.adapters.SearchRecyclerAdapter;
 import com.gamedev.codetube.fragments.FavouriteFragment;
 import com.gamedev.codetube.fragments.HomeFragment;
 import com.gamedev.codetube.fragments.MyAccountFragment;
 import com.gamedev.codetube.fragments.MyCourses;
 import com.gamedev.codetube.fragments.SearchFragment;
+import com.gamedev.codetube.models.Course;
 import com.gamedev.codetube.utils.DataSource;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
 
 
-    private SearchRecyclerAdapter searchRecyclerAdapter;
+
+    SearchRecyclerAdapter recyclerAdapter;
 
 
 
@@ -82,33 +100,63 @@ public class SearchActivity extends AppCompatActivity {
                 }
             };
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        RecyclerView mRecyclerView;
 
-        searchRecyclerAdapter = new SearchRecyclerAdapter(DataSource.getAllCourses());
-        mRecyclerView = findViewById(R.id.search_recycler_view_layout);
+
+
+
+
+
+        /*Courses = new ArrayList<>();
+        Courses.add(new Course("android", "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F53241453%2Fgetfilter-on-a-custom-arrayadapter-not-working&psig=AOvVaw2Pc7JMp1omZUaNXJ_u1gYe&ust=1594472117463000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjdyu7cwuoCFQAAAAAdAAAAABAD"));
+        Courses.add(new Course("Java", "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F53241453%2Fgetfilter-on-a-custom-arrayadapter-not-working&psig=AOvVaw2Pc7JMp1omZUaNXJ_u1gYe&ust=1594472117463000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjdyu7cwuoCFQAAAAAdAAAAABAD"));
+        Courses.add(new Course("python", "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F53241453%2Fgetfilter-on-a-custom-arrayadapter-not-working&psig=AOvVaw2Pc7JMp1omZUaNXJ_u1gYe&ust=1594472117463000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjdyu7cwuoCFQAAAAAdAAAAABAD"));
+
+        recyclerView = findViewById(R.id.rv_search);
+        mLayoutManager = new LinearLayoutManager(this);
+        recyclerAdapter = new CourseAdapter(Courses);
+
+        recyclerView.setLayoutManager(mLayoutManager);*/
+
+
+
+
+        setToolBars();
+
+
+
+        RecyclerView mRecyclerView;
+        recyclerAdapter = new SearchRecyclerAdapter(DataSource.getCourses());
+        mRecyclerView = findViewById(R.id.rv_search);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        mRecyclerView.setAdapter(searchRecyclerAdapter);
+        mRecyclerView.setAdapter(recyclerAdapter);
         setToolBars();
         //setRecyclerView();
 
         //I added this if statement to keep the selected fragment when rotating the device
-        if (savedInstanceState == null)
+        /*if (savedInstanceState == null)
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new HomeFragment()).commit();
-        }
+        }*/
 
     }
 
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu,menu);
 
+        getMenuInflater().inflate(R.menu.main_menu,menu);
         MenuItem item = menu.findItem(R.id.action_search);
+
         SearchView searchView = (SearchView) item.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -118,10 +166,14 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                searchRecyclerAdapter.getFilter().filter(newText);
-                return false;
+               recyclerAdapter.getFilter().filter(newText);
+               return false;
             }
         });
+        /*if(searchTerm != null || searchTerm != ""){
+            searchView.setQuery(searchTerm, true);
+            searchView.clearFocus();
+        }*/
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -157,6 +209,18 @@ public class SearchActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         bottomNav.getMenu().getItem(1).setChecked(true);
     }
+
+    private void setupRecyclerView(String data) {
+
+
+
+
+
+
+            }
+
+
+
 
 
 }

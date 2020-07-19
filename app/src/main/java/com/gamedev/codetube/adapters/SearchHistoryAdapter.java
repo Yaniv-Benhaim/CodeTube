@@ -26,29 +26,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAdapter.ViewHolder> implements Filterable {
+public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.ViewHolder> implements Filterable {
 
 
     private List<Course> allCourses;
     private List<Course> allCoursesFull;
-
-
-    public SearchRecyclerAdapter( List <Course> allCourses) {
-        this.allCourses = allCourses;
-        this.allCoursesFull = new ArrayList<>(allCourses);
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-
-        View view = layoutInflater.inflate(R.layout.search_item_for_fragment_layout, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
-    }
-
     Filter courseFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
@@ -77,14 +59,20 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
         }
     };
 
-    @Override
-    public int getItemCount() {
-        return allCourses.size();
+    public SearchHistoryAdapter( List <Course> allCourses) {
+        this.allCourses = allCourses;
+        this.allCoursesFull = new ArrayList<>(allCourses);
     }
 
+    @NonNull
     @Override
-    public Filter getFilter() {
-        return courseFilter;
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+
+        View view = layoutInflater.inflate(R.layout.course_item, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
@@ -99,10 +87,20 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
 
             @Override
             public void onError(Exception e) {
-               // Toast.makeText(holder.itemView.getContext(), allCourses.get(position).getCourse_thumbnail(), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(holder.itemView.getContext(), allCourses.get(position).getCourse_thumbnail(), Toast.LENGTH_SHORT).show();
             }
         });
 
+    }
+
+    @Override
+    public int getItemCount() {
+        return allCourses.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return courseFilter;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -116,7 +114,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   Intent intent = new Intent(v.getContext(), CourseDetailActivity.class);
+                    Intent intent = new Intent(v.getContext(), CourseDetailActivity.class);
 
                     intent.putExtra("title",allCourses.get(getAdapterPosition()).getTitle());
                     intent.putExtra("imgURL",allCourses.get(getAdapterPosition()).getCourse_thumbnail());
@@ -127,8 +125,8 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
 
                 }
             });
-            title = itemView.findViewById(R.id.search_fragment_title);
-            cover = itemView.findViewById(R.id.search_fragment_cover_image);
+            title = itemView.findViewById(R.id.item_course_title);
+            cover = itemView.findViewById(R.id.item_course_img);
         }
     }
 

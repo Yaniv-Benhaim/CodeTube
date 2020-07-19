@@ -4,23 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_login"
+    android:background="@drawable/bg_purple1"
     tools:context=".ui.LoginActivity">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         android:layout_marginBottom="250dp"
         android:src="@drawable/codetube_logo"
         app:layout_constraintBottom_toTopOf="@id/sign_in_btn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/sign_in_btn"
-        android:layout_width="150dp"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/logo_lottie"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="50dp"
+        android:elevation="7dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/developer_lottie"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
+        android:fontFamily="@font/audiowide"
+        android:gravity="center"
+        android:text="@string/codetube"
+        android:textColor="#fff"
+        android:textSize="29sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo_lottie" />
+
+    <Button
+        android:id="@+id/sign_in_btn"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="75dp"
+        android:layout_marginRight="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="140dp"
+        android:text="Google sign in"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textStyle="bold"
         android:background="@drawable/sign_in_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -28,9 +63,12 @@
 
     <Button
         android:id="@+id/sign_out_btn"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="75dp"
+        android:layout_marginRight="75dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/sign_out_btn_style"
         android:text="Sign Out"
         android:textAllCaps="false"

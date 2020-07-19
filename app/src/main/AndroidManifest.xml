@@ -12,19 +12,51 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.AdminActivity"></activity>
-        <activity android:name=".ui.FireBaseRecyclerView" />
-        <activity android:name=".ui.SearchActivity" />
-        <activity android:name=".ui.LoginActivity">
+        <activity android:name=".ui.About"></activity>
+        <activity
+            android:name=".ui.GoPremiumActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="${applicationId}.braintree" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.AdminActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.FireBaseRecyclerView"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MovieFireBase" />
-        <activity android:name=".ui.CourseDetailActivity" />
-        <activity android:name=".ui.MainActivity" />
+        <activity
+            android:name=".ui.MovieFireBase"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.CourseDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
